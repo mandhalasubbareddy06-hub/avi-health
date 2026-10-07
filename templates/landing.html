@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AVI Health brings your health records, medications, symptoms, and questions into one calm, private workspace.">
+  <title>AVI Health — Your health, organized.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='landing.css') }}">
+</head>
+<body>
+  <header class="landing-header">
+    <a class="logo" href="#top" aria-label="AVI Health home"><span class="logo-mark">♥</span><span>AVI Health</span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="landing-nav" id="landingNav">
+      <a href="#features">Why AVI</a><a href="#how-it-works">How it works</a><a href="#privacy">Privacy</a>
+    </nav>
+    <div class="header-actions"><a class="text-link" href="{{ url_for('login') }}">Sign in</a><a class="button button-dark" href="{{ url_for('register') }}">Start your space</a></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-glow hero-glow-one"></div><div class="hero-glow hero-glow-two"></div>
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> A CALMER HEALTH WORKSPACE</div>
+        <h1>Your health story,<br><em>made clear.</em></h1>
+        <p>Bring your records, medications, symptoms, and questions together—so you can feel prepared, informed, and confident about every conversation.</p>
+        <div class="hero-actions"><a class="button button-primary" href="{{ url_for('register') }}">Create your private space <span>→</span></a><a class="button button-ghost" href="#how-it-works">See how it works</a></div>
+        <div class="trust-row"><span>✓ Private by design</span><span>✓ No medical diagnosis</span><span>✓ Simple to use</span></div>
+      </div>
+      <div class="hero-visual" aria-label="AVI Health dashboard preview">
+        <div class="floating-chip chip-one"><span>✦</span> AI Copilot ready</div>
+        <div class="dashboard-preview">
+          <div class="preview-top"><div><small>YOUR WORKSPACE</small><strong>Good morning</strong></div><div class="preview-avatar">U</div></div>
+          <div class="preview-score"><div class="score-ring"><strong>76</strong><span>/100</span></div><div><small>WORKSPACE READY</small><strong>Your health story is connected.</strong><p>Everything you need is organized and easy to find.</p></div></div>
+          <div class="preview-grid"><div><span>▤</span><small>Records</small><strong>4</strong></div><div><span>✚</span><small>Medication</small><strong>3</strong></div><div><span>◒</span><small>Tracking</small><strong>7 days</strong></div></div>
+          <div class="preview-chat"><span>✦</span><p>How can I help you understand your health information?</p></div>
+        </div>
+        <div class="floating-chip chip-two"><span>✓</span> Health data protected</div>
+      </div>
+    </section>
+
+    <section class="logo-strip"><span>BUILT FOR CLEARER CONVERSATIONS</span><div><b>ORGANIZE</b><b>UNDERSTAND</b><b>PREPARE</b><b>CONNECT</b></div></section>
+
+    <section id="features" class="section features-section">
+      <div class="section-heading"><div class="eyebrow">ONE CALM SPACE</div><h2>Health information that<br><em>makes sense.</em></h2><p>AVI Health turns scattered details into an organized, understandable view of your personal health story.</p></div>
+      <div class="feature-grid">
+        <article class="feature-card feature-featured"><div class="feature-number">01</div><div class="feature-icon">▤</div><h3>Medical records</h3><p>Keep lab results, visit summaries, and important documents organized in one secure workspace.</p><a href="{{ url_for('register') }}">Build your record library <span>↗</span></a></article>
+        <article class="feature-card"><div class="feature-number">02</div><div class="feature-icon">✦</div><h3>AI Copilot</h3><p>Ask questions in plain language and get a clear, cautious explanation of your own health information.</p><a href="{{ url_for('register') }}">Talk to Copilot <span>↗</span></a></article>
+        <article class="feature-card"><div class="feature-number">03</div><div class="feature-icon">✚</div><h3>Medication reminders</h3><p>Organize prescriptions and important care details so you can be prepared for every dose and visit.</p><a href="{{ url_for('register') }}">Create your medication list <span>↗</span></a></article>
+        <article class="feature-card"><div class="feature-number">04</div><div class="feature-icon">◒</div><h3>Health tracking</h3><p>Capture symptoms, routines, and progress in a structured way without turning health into a diagnosis.</p><a href="{{ url_for('register') }}">Start tracking <span>↗</span></a></article>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="section workflow-section">
+      <div class="workflow-copy"><div class="eyebrow">HOW IT WORKS</div><h2>From scattered to<br><em>clear.</em></h2><p>AVI Health is designed to make your next healthcare conversation easier—without replacing your clinician or making medical claims.</p><a class="button button-primary" href="{{ url_for('register') }}">Start today</a></div>
+      <div class="steps">
+        <article><span>01</span><div><h3>Create your space</h3><p>Sign up and set up a private workspace for your health information.</p></div></article>
+        <article><span>02</span><div><h3>Add what matters</h3><p>Organize records, medication details, tracking notes, and questions.</p></div></article>
+        <article><span>03</span><div><h3>Prepare with confidence</h3><p>Use Copilot to understand your information before speaking with a professional.</p></div></article>
+      </div>
+    </section>
+
+    <section id="privacy" class="section privacy-section">
+      <div class="privacy-visual"><div class="privacy-shield">✓</div><div class="privacy-ring ring-one"></div><div class="privacy-ring ring-two"></div><span>YOUR DATA<br>YOUR SPACE</span></div>
+      <div class="privacy-copy"><div class="eyebrow">PRIVACY BY DESIGN</div><h2>Health information deserves<br><em>real protection.</em></h2><p>AVI Health is built to keep your personal information private and organized. It is not a substitute for professional healthcare advice.</p><ul><li><span>✓</span> User-level access controls</li><li><span>✓</span> Passwords protected with PBKDF2-SHA256</li><li><span>✓</span> Secure, signed sessions</li><li><span>✓</span> No health diagnosis or treatment claims</li></ul></div>
+    </section>
+
+    <section class="cta-section"><div><div class="eyebrow">YOUR HEALTH STORY STARTS HERE</div><h2>Feel prepared for what’s<br><em>next.</em></h2></div><a class="button button-light" href="{{ url_for('register') }}">Create your free space <span>→</span></a></section>
+  </main>
+
+  <footer><a class="logo footer-logo" href="#top"><span class="logo-mark">♥</span><span>AVI Health</span></a><p>Organize. Understand. Prepare.</p><div><a href="#privacy">Privacy</a><a href="#features">Features</a><a href="{{ url_for('login') }}">Sign in</a></div><small>© 2026 AVI Health. Educational wellness workspace, not medical advice.</small></footer>
+  <script src="{{ url_for('static', filename='landing.js') }}"></script>
+</body>
+</html>

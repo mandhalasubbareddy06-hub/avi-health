@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AVI Health</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='dashboard-product.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside id="sidebar" class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">♥</div>
+        <div>
+          <div class="brand-name">AVI Health</div>
+          <div class="brand-sub">Your health, organized.</div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        {% for label, slug in nav_items %}
+          {% if label == "Overview" %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="{{ url_for('home') }}">
+          {% elif label == "AI Copilot" %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="#copilot" onclick="event.preventDefault();document.getElementById('copilot').scrollIntoView({behavior:'smooth'});">
+          {% elif label == "Medical Records" %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="{{ url_for('records_page') }}">
+          {% elif label == "Medications" %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="{{ url_for('section', section=slug) }}">
+          {% elif label == "Health Tracking" %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="{{ url_for('section', section=slug) }}">
+          {% else %}
+            <a class="nav-item {% if active == label %}active{% endif %}" href="{{ url_for('section', section=slug) }}">
+          {% endif %}
+              <span class="nav-icon">
+                {% if label == "Overview" %}⌂
+                {% elif label == "AI Copilot" %}✦
+                {% elif label == "Medical Records" %}▤
+                {% elif label == "Medications" %}✚
+                {% elif label == "Health Tracking" %}◒
+                {% else %}⚕{% endif %}
+              </span>
+              {{ label }}
+            </a>
+        {% endfor %}
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="plain-button">⚙ Settings</button>
+        <a href="{{ url_for('login') }}" class="plain-button">↪ Sign in</a>
+      </div>
+    </aside>
+
+    <section class="main">
+      <header class="topbar">
+        <button id="menuBtn" class="mobile-menu">☰</button>
+        <div>
+          <div class="eyebrow">PERSONAL HEALTH WORKSPACE</div>
+          <h1>{{ active }}</h1>
+        </div>
+        <div class="top-actions">
+          <button class="round-button">⌕</button>
+          <button class="round-button notification">♧</button>
+          <a href="{{ url_for('login') }}" class="login-link" aria-label="Open sign in page">Sign in</a>
+          <div class="avatar">U</div>
+        </div>
+      </header>
+
+      <main class="content">
+        {% block content %}{% endblock %}
+      </main>
+    </section>
+  </div>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

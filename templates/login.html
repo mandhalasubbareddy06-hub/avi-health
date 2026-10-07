@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sign in — AVI Health</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login-3d.css') }}">
+</head>
+<body class="login-page">
+  <section class="login-art" id="loginArt">
+    <div class="login-brand"><div class="brand-mark">♥</div><span>AVI Health</span></div>
+    <div class="login-copy">
+      <div class="eyebrow">A CALMER HEALTH WORKSPACE</div>
+      <h1>Your health story, brought together.</h1>
+      <p>Organize records, medications, symptoms and questions for your next conversation with a healthcare professional.</p>
+    </div>
+    <div class="privacy">✓ Privacy-conscious by design</div>
+    <div class="health-orb" aria-hidden="true"></div>
+    <div class="orb-ring" aria-hidden="true"></div>
+    <div class="floating-card floating-card-one" aria-hidden="true">
+      <span class="floating-card-icon">◒</span>
+      <div><strong>Daily rhythm</strong><span>7 day streak</span></div>
+    </div>
+    <div class="floating-card floating-card-two" aria-hidden="true">
+      <span class="floating-card-icon">✚</span>
+      <div><strong>Care ready</strong><span>All records organized</span></div>
+    </div>
+  </section>
+
+  <section class="login-form-wrap">
+    <form class="login-form" method="post" action="{{ url_for('register' if mode == 'register' else 'login_submit') }}">
+      <div class="eyebrow">{% if mode == 'register' %}CREATE YOUR SPACE{% else %}WELCOME BACK{% endif %}</div>
+      <h2>{% if mode == 'register' %}Create your AVI Health account{% else %}Sign in to your health space{% endif %}</h2>
+      {% if error %}<p class="form-error" role="alert">{{ error }}</p>{% endif %}
+      <label class="login-field">Mail ID
+        <span class="input-shell">
+          <span class="field-icon" aria-hidden="true">✉</span>
+          <input type="email" name="mail" placeholder="you@example.com" autocomplete="email" value="{{ request.form.get('mail', '') }}" required>
+        </span>
+      </label>
+      <label class="login-field">Password
+        <span class="input-shell">
+          <span class="field-icon" aria-hidden="true">⌁</span>
+          <input type="password" name="password" placeholder="At least 8 characters" autocomplete="{% if mode == 'register' %}new-password{% else %}current-password{% endif %}" required>
+        </span>
+      </label>
+      {% if mode == 'register' %}
+      <label class="login-field">Confirm password
+        <span class="input-shell">
+          <span class="field-icon" aria-hidden="true">✓</span>
+          <input type="password" name="confirm_password" placeholder="Repeat your password" autocomplete="new-password" required>
+        </span>
+      </label>
+      {% endif %}
+      <button class="primary-button wide">{% if mode == 'register' %}Create account{% else %}Sign in{% endif %}</button>
+      <p class="small muted">
+        {% if mode == 'register' %}Already have an account? <a href="{{ url_for('login') }}">Sign in</a>{% else %}New to AVI Health? <a href="{{ url_for('register') }}">Create an account</a>{% endif %}
+      </p>
+      <p class="medical-note">Before handling real protected health information, implement strong authentication, encryption, access controls, audit logging, secure storage, and applicable healthcare/privacy requirements.</p>
+    </form>
+  </section>
+  <script src="{{ url_for('static', filename='login-3d.js') }}"></script>
+</body>
+</html>

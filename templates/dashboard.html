@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-product">
+  <div class="product-heading">
+    <div>
+      <div class="eyebrow">YOUR HEALTH WORKSPACE</div>
+      <h2>Good morning, {{ user_name }}.</h2>
+      <p>Your health information is organized, private, and available when you need it.</p>
+    </div>
+    <button id="addRecordBtn" class="primary-button">＋ Add health record</button>
+  </div>
+
+  <div class="product-stats">
+    <section class="card product-stat">
+      <div class="eyebrow">HEALTH RECORDS</div>
+      <strong id="recordCount">{{ records|length }}</strong>
+      <span>Private records in your workspace</span>
+    </section>
+    <section class="card product-stat">
+      <div class="eyebrow">ACTIVE CATEGORIES</div>
+      <strong id="categoryCount">{{ records|map(attribute='category')|list|unique|list|length }}</strong>
+      <span>Categories currently in use</span>
+    </section>
+    <section class="card product-stat">
+      <div class="eyebrow">AI SUPPORT</div>
+      <strong>Ready</strong>
+      <span>Ask Copilot for plain-language help</span>
+    </section>
+  </div>
+
+  <div class="product-content">
+    <section class="product-card">
+      <div class="product-card-header">
+        <h3>Your health records</h3>
+        <span class="eyebrow">SECURE & PRIVATE</span>
+      </div>
+      <div id="recordList" class="product-record-list" aria-live="polite"></div>
+    </section>
+
+    <aside class="health-summary">
+      <div class="eyebrow">WELLNESS OVERVIEW</div>
+      <h3>Your health story</h3>
+      <p>AVI Health keeps your information organized without making medical predictions.</p>
+      <div class="health-score">
+        <div class="health-score-ring"><strong>76%</strong></div>
+        <div class="health-score-label"><strong>Workspace ready</strong><span>Health information is connected</span></div>
+      </div>
+      <div class="summary-line"><span>Records</span><strong id="summaryRecordCount">{{ records|length }}</strong></div>
+      <div class="summary-line"><span>Privacy</span><strong>Protected</strong></div>
+      <div class="summary-line"><span>Medical guidance</span><strong>Professional care</strong></div>
+    </aside>
+  </div>
+
+  <section id="copilot" class="product-card" style="margin-top:20px">
+    <div class="product-card-header">
+      <div><h3>Ask your Copilot</h3><p class="muted">Understand health information in plain language.</p></div>
+      <span class="big-icon">✦</span>
+    </div>
+    <div id="messages" class="messages">
+      <div class="empty-message">Try: “Help me prepare questions for my next appointment.”</div>
+    </div>
+    <div class="composer">
+      <input id="question" placeholder="Ask a health question..." autocomplete="off">
+      <button id="sendBtn" class="primary-button">Send</button>
+    </div>
+  </section>
+
+  <div class="disclaimer">✓ AVI Health supports organization and education; it does not diagnose or replace professional care.</div>
+</div>
+
+<div id="recordModal" class="record-modal" role="dialog" aria-modal="true" aria-labelledby="recordModalTitle">
+  <div class="record-modal-panel">
+    <div class="record-modal-header">
+      <h3 id="recordModalTitle">Add health record</h3>
+      <button id="closeModalBtn" class="modal-close" type="button" aria-label="Close">×</button>
+    </div>
+    <form id="recordForm">
+      <input type="hidden" id="recordId">
+      <div class="form-grid">
+        <label class="form-field full">Title<input id="recordTitle" name="title" maxlength="120" required placeholder="e.g. Blood pressure"></label>
+        <label class="form-field">Category
+          <select id="recordCategory" name="category" required>
+            <option value="Tracking">Tracking</option>
+            <option value="Medication">Medication</option>
+            <option value="Appointment">Appointment</option>
+            <option value="Lab result">Lab result</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+        <label class="form-field">Details<textarea id="recordDetails" name="details" maxlength="2000" required placeholder="Add the information you want to keep"></textarea></label>
+      </div>
+      <div class="modal-actions">
+        <button id="cancelModalBtn" class="secondary-button" type="button">Cancel</button>
+        <button class="primary-button" type="submit">Save record</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="productToast" class="product-toast" role="status"></div>
+{% endblock %}

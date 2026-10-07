@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-product section-workspace">
+  <div class="product-heading">
+    <div><div class="eyebrow">HEALTH WORKSPACE</div><h2>{{ section }}</h2><p>Organize and prepare your information with clear, private tools.</p></div>
+    <a class="primary-button" href="{{ url_for('home') }}">↩ Back to dashboard</a>
+  </div>
+  <div class="feature-grid feature-workspace-grid">
+    {% if section == 'AI Copilot' %}
+      <article class="workspace-feature"><span>✦</span><h3>Plain-language support</h3><p>Ask for a clear explanation of your health notes and prepare questions for a professional.</p></article>
+      <article class="workspace-feature"><span>◈</span><h3>Private conversations</h3><p>Your questions stay in your authenticated session and are not used to make medical decisions.</p></article>
+      <article class="workspace-feature"><span>✓</span><h3>Safety boundaries</h3><p>AVI Health provides education and organization, not diagnosis, treatment, or emergency advice.</p></article>
+    {% elif section == 'Medical Records' %}
+      <article class="workspace-feature"><span>▤</span><h3>Record library</h3><p>Store visit summaries, lab results, documents, and notes in your private workspace.</p></article>
+      <article class="workspace-feature"><span>⌕</span><h3>Quick review</h3><p>Search and inspect your current health information through the dashboard record list.</p></article>
+      <article class="workspace-feature"><span>↗</span><h3>Ready to share</h3><p>Prepare accurate information for appointments, referrals, and conversations with professionals.</p></article>
+    {% elif section == 'Medications' %}
+      <article class="workspace-feature"><span>✚</span><h3>Medication details</h3><p>Keep medication names, doses, instructions, and important notes in one organized place.</p></article>
+      <article class="workspace-feature"><span>◷</span><h3>Care preparation</h3><p>Use your records to prepare questions about timing, side effects, and treatment objectives.</p></article>
+      <article class="workspace-feature"><span>!</span><h3>Safety reminder</h3><p>Never change a prescribed medication without discussing it with the prescribing professional.</p></article>
+    {% elif section == 'Health Tracking' %}
+      <article class="workspace-feature"><span>◒</span><h3>Daily observations</h3><p>Capture symptoms, routines, and changes as structured notes for your own reference.</p></article>
+      <article class="workspace-feature"><span>⌁</span><h3>Patterns over time</h3><p>Review your organization and identify trends to discuss with a qualified professional.</p></article>
+      <article class="workspace-feature"><span>○</span><h3>Clear context</h3><p>Pair observations with the relevant record or appointment information.</p></article>
+    {% else %}
+      <article class="workspace-feature"><span>⚕</span><h3>Visit preparation</h3><p>Review your records, symptoms, medications, and questions before each appointment.</p></article>
+      <article class="workspace-feature"><span>✎</span><h3>Important questions</h3><p>Write down what you want to understand and ask your healthcare professional directly.</p></article>
+      <article class="workspace-feature"><span>✓</span><h3>Follow-up notes</h3><p>Capture recommendations and next steps in your private workspace.</p></article>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
