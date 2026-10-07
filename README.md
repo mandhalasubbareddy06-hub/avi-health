@@ -1,15 +1,24 @@
 # AVI Health — Python / Flask
 
-A Python conversion of the AVI Health web UI.
+A launch-ready Python and Flask health workspace with a marketing website, authenticated dashboard, SQLite persistence, health-record CRUD, and AI Copilot interface.
+
+## Features
+
+- Responsive marketing landing page
+- Secure login and registration with PBKDF2-SHA256 password hashing
+- Signed Flask sessions and owner-isolated records
+- SQLite health-record create, update, and delete APIs
+- Product dashboard with live statistics and record management
+- Privacy and medical-safety messaging
+- Automated authentication and record lifecycle tests
 
 ## Requirements
 
 - Python 3.10+
-- VS Code
+- Flask
+- pytest
 
-## Run
-
-### Windows
+## Run locally
 
 ```powershell
 python -m venv .venv
@@ -18,23 +27,15 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### macOS / Linux
+Open http://127.0.0.1:5000.
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python app.py
+## Tests
+
+```powershell
+python -m pytest -q
 ```
 
-Then open:
+## Security note
 
-http://127.0.0.1:5000
+AVI Health is an education and organization tool. It does not diagnose conditions or replace a qualified healthcare professional.
 
-Login demo:
-
-http://127.0.0.1:5000/login
-
-## Next step
-
-The `/api/copilot` route is intentionally a safe demo endpoint. Replace its response logic with your selected AI API and add a real database/authentication layer before handling real health information.
