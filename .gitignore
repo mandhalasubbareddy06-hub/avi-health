@@ -10,6 +10,7 @@ env/
 *.db
 *.db-shm
 *.db-wal
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 .DS_Store
